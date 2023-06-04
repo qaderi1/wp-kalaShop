@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-
-
 <head>
-    <meta charset="<?php bloginfo('charset') ?>">
-    <title><?php bloginfo('title') ?></title>
-
-
-    <link rel="stylesheet" href="  <?php bloginfo('template_url') ?> /style.css">
-    <link rel="stylesheet" href="<?php bloginfo('template_url') ?> /assets/css/swiper-bundle.min.css">
-    <script src="<?php bloginfo('template_url') ?> /assets/js/swiper-bundle.min.js" type="text/javascript"></script>
+    <meta charset=" <?php bloginfo('charset'); ?>">
+    <title><?php bloginfo('title'); ?></title>
+    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/style.css">
+    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/assets/css/swiper-bundle.min.css">
+    <script src="<?php bloginfo('template_url'); ?>/assets/js/swiper-bundle.min.js" type="text/javascript"></script>
+    <?php wp_head() ?>
 </head>
 
 <body>
@@ -417,6 +414,7 @@
             </div>
         </div>
     </footer>
+    <?php wp_footer() ?>
     <script>
     var swiper = new Swiper(".brand-slider", {
         loop: true,

@@ -1,5 +1,5 @@
-# Translation of Plugins - Akismet Spam Protection - Stable (latest release) in Persian
-# This file is distributed under the same license as the Plugins - Akismet Spam Protection - Stable (latest release) package.
+# Translation of Plugins - Akismet Anti-Spam: Spam Protection - Stable (latest release) in Persian
+# This file is distributed under the same license as the Plugins - Akismet Anti-Spam: Spam Protection - Stable (latest release) package.
 msgid ""
 msgstr ""
 "PO-Revision-Date: 2020-04-14 14:10:50+0000\n"
@@ -9,7 +9,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: GlotPress/4.0.0-alpha.4\n"
 "Language: fa\n"
-"Project-Id-Version: Plugins - Akismet Spam Protection - Stable (latest release)\n"
+"Project-Id-Version: Plugins - Akismet Anti-Spam: Spam Protection - Stable (latest release)\n"
 
 #: class.akismet-admin.php:705
 msgid "No comment history."
@@ -121,11 +121,6 @@ msgstr "پیکربندی دستی"
 msgid "On this page, you are able to update your Akismet settings and view spam stats."
 msgstr "در این صفحه، می توانید تنظیمات اکیسمت خود را بروزرسانی کنید و آمار هرزنامه ها را مشاهده کنید."
 
-#. Description of the plugin
-msgid "Used by millions, Akismet is quite possibly the best way in the world to <strong>protect your blog from spam</strong>. It keeps your site protected even while you sleep. To get started: activate the Akismet plugin and then go to your Akismet Settings page to set up your API key."
-msgstr "اکیسمت توسط میلیونها کاربر استفاده می شود، احتمالا بهترین راه در جهان است تا <strong>وبلاگ خود را از هرزنامه ها محافظت کنید</strong>. آن حتی در حالی که خواب می بینید از سایت شما محافظت می کند. برای شروع: افزونه اکیسمت را فعال کنید و سپس به صفحه تنظیمات اکیسمت خود بروید تا کلید API خود را تنظیم کنید."
-
-#. Plugin Name of the plugin
 #: class.akismet-admin.php:114 class.akismet-admin.php:117
 msgid "Akismet Anti-Spam"
 msgstr "ضد هرزنامه"
@@ -339,10 +334,6 @@ msgstr "این نظر به عنوان هرزنامه گزارش شده بود."
 #. Author URI of the plugin
 msgid "https://automattic.com/wordpress-plugins/"
 msgstr "https://automattic.com/wordpress-plugins/"
-
-#. Author of the plugin
-msgid "Automattic"
-msgstr "Automattic"
 
 #. Plugin URI of the plugin
 msgid "https://akismet.com/"
