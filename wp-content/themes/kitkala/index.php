@@ -1,14 +1,34 @@
  <?php get_header(); ?>
 
  <div class="kitkala-center">
-   <div class="left-banner"><a href="#"><img src="assets/img/left-banner.jpg" alt=""></a></div>
+   <div class="left-banner"><a href="#"><img src="<?php bloginfo('template_url'); ?>/assets/img/left-banner.jpg" alt=""></a></div>
    <div class="home-slider">
      <div class="swiper mySwiper">
        <div class="swiper-wrapper">
-         <div class="swiper-slide"><img src="assets/img/slide.png" alt=""></div>
-         <div class="swiper-slide"><img src="assets/img/slide.png" alt=""></div>
-         <div class="swiper-slide"><img src="assets/img/slide.png" alt=""></div>
-         <div class="swiper-slide"><img src="assets/img/slide.png" alt=""></div>
+
+         <?php
+
+          $array_slider = array('post_type' => 'slider', 'posts_per_page' => 3);
+          $query = new WP_Query($array_slider);
+
+          if ($query->have_posts()) {
+            while ($query->have_posts()) {
+              $query->the_post(); ?>
+
+
+             <div class="swiper-slide"><a href="<?php the_permalink(); ?>">
+                 <?php the_post_thumbnail() ?>
+
+               </a></div>
+
+         <?php
+            }
+          } else {
+            echo '<div class="swiper-slide">پستی برای نمایش وجود ندارد</div>';
+          }
+
+          ?>
+
        </div>
        <div class="swiper-button-next"></div>
        <div class="swiper-button-prev"></div>
@@ -18,16 +38,16 @@
    <div class="clear"></div>
    <div class="banner-container">
      <div class="banner-item">
-       <a href="#"> <img src="assets/img/0.jpg" alt=""> </a>
+       <a href="#"> <img src="<?php bloginfo('template_url'); ?>/assets/img/0.jpg" alt=""> </a>
      </div>
      <div class="banner-item">
-       <a href="#"> <img src="assets/img/1.jpg" alt=""> </a>
+       <a href="#"> <img src="<?php bloginfo('template_url'); ?>/assets/img/1.jpg" alt=""> </a>
      </div>
      <div class="banner-item">
-       <a href="#"> <img src="assets/img/2.jpg" alt=""> </a>
+       <a href="#"> <img src="<?php bloginfo('template_url'); ?>/assets/img/2.jpg" alt=""> </a>
      </div>
      <div class="banner-item">
-       <a href="#"> <img src="assets/img/3.jpg" alt=""> </a>
+       <a href="#"> <img src="<?php bloginfo('template_url'); ?>/assets/img/3.jpg" alt=""> </a>
      </div>
    </div>
    <div class="suggest-product">
