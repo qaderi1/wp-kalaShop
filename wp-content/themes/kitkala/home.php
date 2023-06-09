@@ -327,9 +327,6 @@
         wp_reset_postdata();
         ?>
 
-
-
-
          </div>
          <h4 class="home-brand-title">برندهای ویژه</h4>
          <div class="home-brands swiper brand-slider">
@@ -348,8 +345,6 @@
 
                          <div class="brand-item"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
                          </div>
-
-
 
                          <?php
                 }

@@ -56,3 +56,125 @@ function kitkala_brands_post_type()
 }
 
 add_action('init', 'kitkala_brands_post_type');
+
+
+//add widget for footer
+function kitkala_register_widgets_init()
+{
+    register_sidebar(array(
+        'name' => __('فوتر کیت کالا', 'kitkala'),
+        'id' => 'footer-1',
+        'description' => __('در این بخش ابزارک های فوتر سایت قرار میگیرد', 'kitkala'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        // 'before_title'  => '<h3 class="widget-title">',
+        // 'after_title'   => '</h3>',
+    ));
+    register_sidebar(array(
+        'name' => __('فوتر کیت کالا2', 'kitkala'),
+        'id' => 'footer-2',
+        'description' => __('در این بخش ابزارک های فوتر سایت قرار میگیرد', 'kitkala'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        // 'before_title'  => '<h3 class="widget-title">',
+        // 'after_title'   => '</h3>',
+    ));
+    register_sidebar(array(
+        'name' => __('فوتر کیت کالا3', 'kitkala'),
+        'id' => 'footer-3',
+        'description' => __('در این بخش ابزارک های فوتر سایت قرار میگیرد', 'kitkala'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        // 'before_title'  => '<h3 class="widget-title">',
+        // 'after_title'   => '</h3>',
+    ));
+    register_sidebar(array(
+        'name' => __('سایدبار کیت کالا', 'kitkala'),
+        'id' => 'sidebar_widget',
+        'description' => __('در این بخش ابزارک های سایدبار قرار میگیرد', 'kitkala'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        // 'before_title'  => '<h3 class="widget-title">',
+        // 'after_title'   => '</h3>',
+    ));
+}
+add_action('widgets_init', 'kitkala_register_widgets_init');
+
+class kitkalaRecentPostRegisterWidget extends WP_Widget
+{
+    function __construct()
+    {
+        parent::__construct(false, __('نمایش آخرین پست های کیت کالا', 'kitkala'));
+    }
+
+    function widget($arg, $instance)
+    { ?>
+
+        <div class="sidebar-related-post">
+            <span class="last-post-title"><?php echo $instance['recenttitle'] ?></span>
+            <?php
+            $arg = ['post_type' => 'post', 'posts_per_page' => $instance['recentnumber']];
+            //query
+            $the_query = new WP_Query($arg);
+            //theloop
+            if ($the_query->have_posts()) {
+                while ($the_query->have_posts()) {
+                    $the_query->the_post(); ?>
+                    <div class="item-post">
+                        <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+                        <a href="<?php the_permalink(); ?>">
+                            <h3 class="title-post"><?php the_title(); ?></h3>
+                        </a>
+                    </div>
+
+            <?php
+
+                }
+            } else {
+                echo '<div class="item-post">';
+            }
+            wp_reset_postdata();
+            ?>
+
+
+        </div>
+
+
+
+    <?php
+
+    }
+
+    function update($new_instance, $old_instance)
+    {
+        $instance = $old_instance;
+        $instance['recenttitle'] = $new_instance['recenttitle'];
+        $instance['recentnumber'] = $new_instance['recentnumber'];
+        return $instance;
+    }
+
+    public function form($instance)
+    {
+        $title = $instance['recenttitle'];
+        $number = $instance['recentnumber'];
+        $fileTitleld = $this->get_field_id('recenttitle');
+        $fileTitleName = $this->get_field_name('recenttitle');
+        $fileNumberld = $this->get_field_id('recentnumber');
+        $fileNumberName = $this->get_field_name('recentnumber');
+    ?>
+        <labla for=''>عنوان پست</labla>
+        <input type="text" id="<?php echo $fileTitleld; ?>" name="<?php echo $fileTitleName; ?>" value="<?php echo $title; ?>">
+        <input type="number" id="<?php echo $fileNumberld; ?>" name="<?php echo $fileNumberName; ?>" value="<?php echo $number; ?>">
+
+<?php
+
+    }
+}
+
+
+add_action('widgets_init', 'kitkalaregisterfunc');
+
+function kitkalaregisterfunc()
+{
+    register_widget('kitkalaRecentPostRegisterWidget');
+}

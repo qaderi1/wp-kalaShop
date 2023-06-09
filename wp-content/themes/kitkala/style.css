@@ -762,7 +762,7 @@ footer{
 	color: #fff;
 	line-height: 3;
 }
-.footer-column-title{
+.footer-column h1,.footer-column h2,.footer-column h3,.footer-column h4,.footer-column h5,.footer-column h6{
 	font-weight: bold;
 	font-size: 19px;
 	color: #fff;
