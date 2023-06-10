@@ -1,4 +1,10 @@
 <?php
+
+//عریف سایز عکس مناسب
+add_image_size('recent-posts', 60, 60, true);
+
+
+
 //تعریف تابع برای منو 
 function kitkala_header_menu()
 {
@@ -121,7 +127,7 @@ class kitkalaRecentPostRegisterWidget extends WP_Widget
                 while ($the_query->have_posts()) {
                     $the_query->the_post(); ?>
                     <div class="item-post">
-                        <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+                        <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('recent-post'); ?></a>
                         <a href="<?php the_permalink(); ?>">
                             <h3 class="title-post"><?php the_title(); ?></h3>
                         </a>
@@ -136,10 +142,7 @@ class kitkalaRecentPostRegisterWidget extends WP_Widget
             wp_reset_postdata();
             ?>
 
-
         </div>
-
-
 
     <?php
 
@@ -178,3 +181,10 @@ function kitkalaregisterfunc()
 {
     register_widget('kitkalaRecentPostRegisterWidget');
 }
+
+//dynamic title
+function dynamic_title()
+{
+    add_theme_support('title-tag');
+}
+add_action('init', 'dynamic_title');
