@@ -964,6 +964,7 @@ color: #5aa3fd;
 }
 .archive-content .item{
 	width: calc(25% - 8px);
+	height:330px ;
 	margin: 0 6px 20px 2px;
 	background: #fff;
 	text-align: center;
@@ -973,7 +974,8 @@ color: #5aa3fd;
 	float: right;
 }
 .archive-content .item img{
-	max-width: 100%;
+	max-width: 190px;
+	height: 200px;
 }
 .archive-title{
 	color: #3f3d3d;
@@ -1011,4 +1013,35 @@ color: #5aa3fd;
 	box-shadow: 0 0 15px #52a4ffcf;
 	display: inline-block;
 	font-size: 14px;
+}
+
+.archive-content .navigation{
+	text-align: center;
+
+}
+.archive-content .navigation ul li{
+	max-width: 0px 5px;
+	display: inline-block;
+	
+}
+.archive-content .navigation ul{
+	display: inline-block;
+	padding: 5px 6px;
+    background-color: white;
+    border-radius: 25px;
+	
+}
+.archive-content .navigation ul li{
+	max-width: 0px 5px;
+font-size: 18px;
+	
+}
+.archive-content .navigation ul li.active a{
+	display: block;
+	border-radius: 50px;
+	line-height: 1.5;
+    width: 25px;  
+    height: 25px;
+    background: linear-gradient(45deg, #005fe6, #00aeff);
+    color: white;
 }
