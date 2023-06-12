@@ -974,6 +974,7 @@ color: #5aa3fd;
 	float: right;
 }
 .archive-content .item img{
+	border-radius: 8px;
 	max-width: 190px;
 	height: 200px;
 }
@@ -1044,4 +1045,61 @@ font-size: 18px;
     height: 25px;
     background: linear-gradient(45deg, #005fe6, #00aeff);
     color: white;
+}
+
+/* comments */
+.kitkala-comments{
+margin-top: 20px;
+	font-family: 'KalamehWeb';
+
+}
+.kitkala-comments input{
+padding: 7px;
+border: 1px solid #d3d3d3;
+border-radius: 5px;
+outline: none;
+font-family: 'KalamehWeb';
+
+}
+.kitkala-comments p{
+text-align: right!important;
+	font-family: 'KalamehWeb';
+
+}
+.comment-form p.comment-form-author,.comment-form p.comment-form-email,.comment-form p.comment-form-url{
+	width: 45%;
+	display: inline-block;
+	margin: 0 20px;
+}
+.kitkaka-comments input#author,.kitkaka-comments input#email,.kitkaka-comments input#url{
+	width: 100%;
+}
+.comment-replay-title{
+	font-weight: bold;
+	font-size: 20px;
+	color: #404040;
+}
+.comment-form-comment textarea{
+	    outline: none;
+    border: 1px solid #d3d3d3;
+	width: 100%;
+	border-radius: 8px;
+	font-family: 'KalamehWeb';
+
+}
+
+.comment-form-comment labla{
+	display: inline-block;
+	text-align: right;
+}
+#submit{
+	border: none;
+	border-radius: 8px;
+	color: #fff;
+	font-size: 16px;
+	font-weight: bold;
+	width: 100%;
+	padding: 10px 0;
+	font-family: 'KalamehWeb';
+	background: linear-gradient(45deg,#005fe6,#00aeff);
 }
