@@ -118,9 +118,9 @@ class kitkalaRecentPostRegisterWidget extends WP_Widget
     function widget($arg, $instance)
     { ?>
 
-        <div class="sidebar-related-post">
-            <span class="last-post-title"><?php echo $instance['recenttitle'] ?></span>
-            <?php
+<div class="sidebar-related-post">
+    <span class="last-post-title"><?php echo $instance['recenttitle'] ?></span>
+    <?php
             $arg = ['post_type' => 'post', 'posts_per_page' => $instance['recentnumber']];
             //query
             $the_query = new WP_Query($arg);
@@ -128,14 +128,14 @@ class kitkalaRecentPostRegisterWidget extends WP_Widget
             if ($the_query->have_posts()) {
                 while ($the_query->have_posts()) {
                     $the_query->the_post(); ?>
-                    <div class="item-post">
-                        <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('recent-post'); ?></a>
-                        <a href="<?php the_permalink(); ?>">
-                            <h3 class="title-post"><?php the_title(); ?></h3>
-                        </a>
-                    </div>
+    <div class="item-post">
+        <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('recent-post'); ?></a>
+        <a href="<?php the_permalink(); ?>">
+            <h3 class="title-post"><?php the_title(); ?></h3>
+        </a>
+    </div>
 
-            <?php
+    <?php
 
                 }
             } else {
@@ -144,9 +144,9 @@ class kitkalaRecentPostRegisterWidget extends WP_Widget
             wp_reset_postdata();
             ?>
 
-        </div>
+</div>
 
-    <?php
+<?php
 
     }
 
@@ -167,9 +167,10 @@ class kitkalaRecentPostRegisterWidget extends WP_Widget
         $fileNumberld = $this->get_field_id('recentnumber');
         $fileNumberName = $this->get_field_name('recentnumber');
     ?>
-        <labla for=''>عنوان پست</labla>
-        <input type="text" id="<?php echo $fileTitleld; ?>" name="<?php echo $fileTitleName; ?>" value="<?php echo $title; ?>">
-        <input type="number" id="<?php echo $fileNumberld; ?>" name="<?php echo $fileNumberName; ?>" value="<?php echo $number; ?>">
+<labla for=''>عنوان پست</labla>
+<input type="text" id="<?php echo $fileTitleld; ?>" name="<?php echo $fileTitleName; ?>" value="<?php echo $title; ?>">
+<input type="number" id="<?php echo $fileNumberld; ?>" name="<?php echo $fileNumberName; ?>"
+    value="<?php echo $number; ?>">
 
 <?php
 
@@ -264,3 +265,11 @@ function kitKalaWooCommerceSupport()
     add_theme_support('woocommerce');
 }
 add_action('after_setup_theme', 'kitKalaWooCommerceSupport');
+
+//Change price location in Woocommerce Single Product Layout
+function channgePriceLocation()
+{
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+    add_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 25);
+}
+add_action('after_setup_theme', 'channgePriceLocation');
