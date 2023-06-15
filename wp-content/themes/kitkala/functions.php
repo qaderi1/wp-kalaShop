@@ -256,3 +256,11 @@ function wpbeginner_numeric_posts_nav()
 
     echo '</ul></div>' . "\n";
 }
+
+
+//support for wooCemmerce
+function kitKalaWooCommerceSupport()
+{
+    add_theme_support('woocommerce');
+}
+add_action('after_setup_theme', 'kitKalaWooCommerceSupport');
