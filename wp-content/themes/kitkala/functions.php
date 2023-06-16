@@ -273,3 +273,18 @@ function channgePriceLocation()
     add_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 25);
 }
 add_action('after_setup_theme', 'channgePriceLocation');
+
+//option for woocommerce
+add_theme_support('wc-product-gallery-zoom');
+add_theme_support('wc-product-gallery-lightbox');
+add_theme_support('wc-product-gallery-slider');
+
+//change show image thublnail inwoocommerce product
+function channgeImageThublnailColumn($wrapper_classes)
+{
+    $columns = 3;
+    $wrapper_classes[2] = 'woocommerce-product-gallery--columns-' . absint($columns);
+    return $wrapper_classes;
+}
+
+add_filter('woocommerce_single_product_image_gallery_classes', 'channgeImageThublnailColumn');

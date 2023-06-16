@@ -1103,3 +1103,7 @@ text-align: right!important;
 	font-family: 'KalamehWeb';
 	background: linear-gradient(45deg,#005fe6,#00aeff);
 }
+
+.w-full{
+	width: calc(100% - 40px)!important;
+}
