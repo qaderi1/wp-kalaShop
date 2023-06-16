@@ -288,3 +288,42 @@ function channgeImageThublnailColumn($wrapper_classes)
 }
 
 add_filter('woocommerce_single_product_image_gallery_classes', 'channgeImageThublnailColumn');
+
+//change dashbourdMyAccounts inwoocommerce product
+function editMyAccountMenu($menu_name)
+{
+    $menu_name['orders'] = 'سفارشات';
+    $menu_name['downloads'] = 'دانلودها';
+    return $menu_name;
+}
+
+add_filter('woocommerce_account_menu_items', 'editMyAccountMenu');
+
+//add coustom menu items
+//اضافه کردن منو خودمون به منو ها 
+function addItemMenuAccounts($menu_items)
+{
+    $menu_items = array_slice($menu_items, 0, 5, true) +
+        array('kitkala-doreha' => 'دوره ها') +
+        array_slice($menu_items, 5, null, true);
+    return $menu_items;
+}
+
+add_filter('woocommerce_account_menu_items', 'addItemMenuAccounts', 40);
+
+//
+
+function menuAddEndPoint()
+{
+    add_rewrite_endpoint('kitkala-doreha', EP_PAGES);
+}
+add_action('init', 'menuAddEndPoint');
+
+
+function conteentMyAccountMenu()
+{
+    echo "هنوز خریداری نشده";
+}
+
+
+add_action('woocommerce_account_kitkala-doreha_endpoint', 'conteentMyAccountMenu');
