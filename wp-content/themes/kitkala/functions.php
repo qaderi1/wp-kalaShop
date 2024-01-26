@@ -43,3 +43,127 @@ function kitkalaBrandsPosttype(){
 }
 
 add_action('init', 'kitkalaBrandsPosttype');
+
+/**
+ * add widget fo footer 
+ */
+
+function kitkalaRegisterWidget(){
+    register_sidebar([
+        'name'          => __( 'قوتر کیت کالا یک', 'kitkala' ),
+        'id'            => 'footer-1',
+		'description'   => __( 'در این بحش قسمت فوتر اول هست.', 'kitkala' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widgettitle">',
+		'after_title'   => '</h2>',
+    ]);
+    register_sidebar([
+        'name'          => __( 'قوتر کیت کالا 2', 'kitkala' ),
+        'id'            => 'footer-2',
+		'description'   => __( 'در این بحش قسمت فوتر 2 هست.', 'kitkala' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widgettitle">',
+		'after_title'   => '</h2>',
+    ]);
+    register_sidebar([
+        'name'          => __( 'قوتر کیت کالا 3', 'kitkala' ),
+        'id'            => 'footer-3',
+		'description'   => __( 'در این بحش قسمت فوتر 3 هست.', 'kitkala' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widgettitle">',
+		'after_title'   => '</h2>',
+    ]);
+    register_sidebar([
+        'name'          => __( 'سابدبار میت کالا', 'sidebar_widget' ),
+        'id'            => 'sidebar_widget',
+        'description'   => __( 'در این بحش قسمت سایدراب مقالات هست', 'kitkala' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+    ]);
+}
+add_action( 'widgets_init', 'kitkalaRegisterWidget' );
+
+
+function wpdocs_theme_slug_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Main Sidebar', 'textdomain' ),
+		'id'            => 'sidebar-1',
+		'description'   => __( 'Widgets in this area will be shown on all posts and pages.', 'textdomain' ),
+		'before_widget' => '<li id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</li>',
+		'before_title'  => '<h2 class="widgettitle">',
+		'after_title'   => '</h2>',
+	) );
+}
+
+// add register side bar to site
+
+class kitKalaRecentPostRegister extends WP_Widget{
+
+    public function __construct(){
+        parent::__construct('kitkala_recent_posts', __('نمایش آخرین مقالات', 'kitkala'));
+    }
+
+    public function widget($args, $instance){
+        ?>
+              <div class="sidebar-related-post">
+<span class="last-post-title"><?php echo $instance['recentTitle'] ?></span>
+
+        <?php
+        $args=[
+            'post_type'=>'post',
+            'post_per_page'=>$instance['recentNumber']
+        ];
+
+        $the_query=new WP_Query($args);
+
+        if($the_query->have_posts()){
+            while($the_query->have_posts()){
+                $the_query->the_post();
+
+                ?>
+                <div class="item-post">
+                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+                    <a href="<?php the_permalink(); ?>"><h3 class="title-post"><?php the_title() ?></h3></a>
+                </div>
+
+                <?php
+            }
+        }else {
+            echo 'اسلایدری یافت نشد';
+        }
+        wp_reset_postdata();
+        ?>
+              </div>
+ <?php
+
+    }
+
+    public function update($new_instance, $old_instance){
+        $instance=$old_instance;
+        $instance['recentTitle']=$new_instance['recentTitle'];
+        $instance['recentNumber']=$new_instance['recentNumber'];
+        return $instance;
+    }
+
+    public function form($instance){
+        $title=$instance['recentTitle'];
+        $number=$instance['recentNumber'];
+        ?>
+        <lable for="<?php echo $this->get_field_id('recentTitle') ?>" >عنوان</lable>
+        <input id="<?php echo $this->get_field_id('recentTitle') ?>" name="<?php echo $this->get_field_name('recentTitle') ?>" type="text" value="<?php echo $title ?>">
+        <lable for="<?php echo $this->get_field_id('recentNumber') ?>">تعداد</lable>
+        <input id="<?php echo $this->get_field_id('recentNumber') ?>"   name="<?php echo $this->get_field_name('recentNumber') ?>"  type="number" value="<?php echo $number ?>">
+<?php
+        return '';
+    }
+}
+
+add_action('widgets_init', 'kitkalaRegisterFunc');
+
+function kitkalaRegisterFunc(){
+    register_widget('kitKalaRecentPostRegister');
+}

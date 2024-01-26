@@ -1,30 +1,27 @@
 <footer>
       <div class="kitkala-center">
         <div class="feature-footer">
-          <img src="assets/img/features.png" alt="">
+          <img src="<?php bloginfo('template_url' ) ?>/assets/img/features.png" alt="">
         </div>
         <div class="footer-column">
-          <h4 class="footer-column-title">راه های ارتباطی</h4>
-          <p>
-            شماره تماس: 02154743046 <br>
-            ایمیل : info@kitwp.com <br>
-            آدرس : تهران، زعفرانیه ساختمان اداری لاله <br>
-            زمان پاسخگویی : 8 صبح تا 8 عصر <br>
-          </p>
+          <?php if(is_active_sidebar( 'footer-1' )){
+            dynamic_sidebar( 'footer-1' );
+          } ?>
         </div>
         <div class="footer-column">
-          <h4 class="footer-column-title">دسترسی سریع</h4>
-          <ul>
-            <li><a href="#">درباره ما</a></li>
-            <li><a href="#">یگیری سفارش</a></li>
-            <li><a href="#">روش های پرداخت</a></li>
-            <li><a href="#">سوالان متداول</a></li>
-          </ul>
+          <?php if(is_active_sidebar( 'footer-2' )){
+            dynamic_sidebar( 'footer-2' );
+          } ?>
         </div>
         <div class="footer-column">
+          <?php if(is_active_sidebar( 'footer-3' )){
+            dynamic_sidebar( 'footer-3' );
+          } ?>
+        </div>
+        <!-- <div class="footer-column">
           <h4 class="footer-column-title">مجوزها</h4>
           <a href="#"><img src="assets/img/namad.png" alt=""> </a>
-        </div>
+        </div> -->
         <div class="copyright-text"><p>استفاده از مطالب فروشگاه اینترنتی کیت کالا برای مقاصد غیر تجاری و با ذکر منبع بلا مانع است.</p></div>
       </div>
 
