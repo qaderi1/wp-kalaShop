@@ -2,7 +2,7 @@
 <?php get_header( ) ?>
 
       <section class="pages-content">
-        <div class="thumbnail-image"><?php the_post_thumbnail(); ?></div>
+        <div class="thumbnail-image"><?php the_post_thumbnail('thumbnail_image'); ?></div>
         <div class="specification-post">
           <span class="category-post" ><?php the_category(); ?></span>
           <h1 class="post-title"><?php the_title() ?></h1>
