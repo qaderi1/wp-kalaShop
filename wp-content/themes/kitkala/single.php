@@ -1,6 +1,6 @@
 
 <?php get_header( ) ?>
-
+<?php get_sidebar( ) ?>
       <section class="pages-content">
         <div class="thumbnail-image"><?php the_post_thumbnail('thumbnail_image'); ?></div>
         <div class="specification-post">
@@ -17,8 +17,11 @@
         <div class="inner-content">
  <?php the_content(); ?>
         </div>
+          <div class="page-contents kitkala-comments">
+              <?php comments_template(); ?>
+          </div>
       </section>
-<?php get_sidebar( ) ?>
+
     </div>
     <div class="clear"></div>
 <?php get_footer( ) ?>
