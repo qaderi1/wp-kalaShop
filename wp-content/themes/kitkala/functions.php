@@ -247,3 +247,35 @@ function numeric_posts_nav() {
        // printf( '<li>%s</li>' . "\n", get_next_posts_link() );
 
     echo '</ul></div>' . "\n"; }
+
+// add support woocommerce to theme
+    function kitKalaWoocommerceSupport():void{
+        add_theme_support('woocommerce');
+    }
+    add_action('after_setup_theme','kitKalaWoocommerceSupport');
+
+//change price position
+function changing_price_location_for_simple_products(){
+    global $product;
+
+    if($product->is_type('simple')) // Only for simple products (thanks to helgathevicking)
+    {
+        remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+        add_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 25);
+    }
+}
+add_action('woocommerce_before_single_product', 'changing_price_location_for_simple_products');
+
+//option fot woocommerce
+add_theme_support('wc-product-gallery-zoom');
+add_theme_support('wc-product-gallery-lightbox');
+add_theme_support('wc-product-gallery-slider');
+//change column gallery
+
+add_filter( 'woocommerce_single_product_image_gallery_classes', 'bbloomer_5_columns_product_gallery' );
+
+function bbloomer_5_columns_product_gallery( $wrapper_classes ) {
+    $columns = 3; // change this to 2, 3, 5, etc. Default is 4.
+    $wrapper_classes[2] = 'woocommerce-product-gallery--columns-' . absint( $columns );
+    return $wrapper_classes;
+}
